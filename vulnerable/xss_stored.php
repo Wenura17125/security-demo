@@ -5,10 +5,11 @@ $conn = getVulnerableConnection();
 
 // Handle comment submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment'])) {
-    $username = $_POST['username'];
-    $comment = $_POST['comment'];
+    $username = $conn->real_escape_string($_POST['username']);
+    $comment = $conn->real_escape_string($_POST['comment']);
     
-    // VULNERABLE: Storing unsanitized input
+    // VULNERABLE: Storing unsanitized input (XSS vulnerability - intentional for demo)
+    // However, we escape SQL special characters to prevent SQL injection
     $query = "INSERT INTO comments (username, comment) VALUES ('$username', '$comment')";
     $conn->query($query);
     

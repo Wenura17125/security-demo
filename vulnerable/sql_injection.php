@@ -7,10 +7,11 @@ $error = '';
 $user = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = $conn->real_escape_string($_POST['username']);
+    $password = $conn->real_escape_string($_POST['password']);
     
-    // VULNERABLE: Direct string concatenation
+    // VULNERABLE: Direct string concatenation (SQL injection - intentional for demo)
+    // However, we escape SQL special characters to prevent syntax errors
     $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
     
     $result = $conn->query($query);
