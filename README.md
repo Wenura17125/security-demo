@@ -12,7 +12,7 @@
 
 1. **Clone or Download the Repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Wenura17125/security-demo.git
    cd security-demo
    ```
 
