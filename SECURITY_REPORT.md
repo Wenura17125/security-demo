@@ -1,6 +1,6 @@
 # Web Security Vulnerabilities Demonstration Report
 
-**Author:** Your Name  
+**Author:** Wenura  
 **Date:** November 22, 2025  
 **Project:** Security Demo - Web Vulnerabilities & Mitigation
 
